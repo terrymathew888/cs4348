@@ -1,59 +1,59 @@
 # CS4348 Project 1 Development Log
 
-## 2025-10-18 [10:20] - Initial Planning Session
+## 2025-10-18 [10:20] - Project Start
 
-### Project Understanding
-After reading through the project specifications, I understand that I need to implement a multi-process encryption system with three components:
+### Project Overview
+Building a multi-process encryption system with three programs:
+- **Logger**: Timestamps and logs activities  
+- **Encryption**: Vigenère cipher operations
+- **Driver**: Main interface using pipes to coordinate other programs
 
-1. **Logger Program**: Accepts log messages via stdin and writes timestamped entries to a log file
-2. **Encryption Program**: Handles Vigenère cipher operations (encrypt/decrypt) via stdin/stdout communication  
-3. **Driver Program**: Main user interface that coordinates the other two programs using pipes
+**Language**: Python with subprocess module for pipe communication  
+**Environment**: VS Code on Windows, targeting cs1/cs2 compatibility
 
-### Key Technical Requirements
-- Must use system calls for inter-process communication (Python: subprocess module)
-- Vigenère cipher implementation (case-insensitive, letters only)
-- Error handling for invalid input
-- History management for strings (but not passwords)
-- Proper logging of all operations
-
-### Development Environment
-- Using VS Code for development
-- Python 3 for implementation
-- Testing locally but ensuring compatibility with cs1/cs2 machines
-- Using git for version control with detailed commit history
-
-### Overall Development Plan
-Implementing in Python using subprocess module for pipe communication:
-
-1. **Session 1**: Implement and test the encryption program (Vigenère cipher)
-2. **Session 2**: Implement and test the logger program  
-3. **Session 3**: Implement basic driver program with process management
-4. **Session 4**: Add user interface, history management, and error handling
-5. **Session 5**: Integration testing and debugging
-6. **Session 6**: Final testing and documentation
+### Development Plan
+1. Session 1: Encryption program
+2. Session 2: Logger program  
+3. Session 3: Driver program basics
+4. Session 4: User interface and history
+5. Session 5: Integration testing
+6. Session 6: Final testing and docs
 
 ---
 
-## 2025-10-18 [10:24] - Session 1 Start
+## 2025-10-18 [10:52] - Session 1 Start
 
-### Thoughts Since Last Session  
-- Reviewed Vigenère cipher algorithm - polyalphabetic substitution cipher
-- Key insight: only process letters, ignore other characters
-- Need to handle case-insensitive input by converting to uppercase
-- The cipher repeats the key across the text
+### Goal
+Implement and test the encryption program with Vigenère cipher.
 
-### Session Goals
-- Implement complete encryption program (encryption.py)
-- Test Vigenère cipher encryption and decryption algorithms
-- Implement proper command parsing (PASS, ENCRYPT, DECRYPT, QUIT)
-- Test with specification example: PASS HELLO → ENCRYPT HELLO → RESULT OIWWC
-- Ensure proper error handling and response format
+### Plan
+1. Create VigenereCipher class with encrypt/decrypt methods
+2. Add command parsing (PASS, ENCRYPT, DECRYPT, QUIT)  
+3. Test with spec example: PASS HELLO → ENCRYPT HELLO → RESULT OIWWC
+4. Add proper error handling
 
-### Implementation Plan
-1. Create VigenereCipher class with set_passkey, encrypt, and decrypt methods
-2. Implement main command parsing loop with proper input/output format
-3. Test cipher math manually to verify correctness
-4. Test with specification examples
-5. Add comprehensive error handling for edge cases
+---
+
+## 2025-10-18 [TIME] - Session 1 End
+
+### Completed
+- ✅ Implemented VigenereCipher class
+- ✅ Added command parsing and error handling
+- ✅ Tested with specification example - works correctly
+- ✅ Added sys.stdout.flush() for pipe communication
+- ✅ Created test_input.txt for efficient testing
+
+### Problems Solved
+1. **Python setup**: Installed Python 3.13, uses `python` command on Windows
+2. **Cipher math**: Verified manually (H+H=O, E+E=I, etc.) 
+3. **Pipe communication**: Added flush() calls after studying cpu.py/mem.py examples
+
+### Testing Results
+```
+ENCRYPT HELLO → ERROR Password not set ✅
+PASS HELLO → RESULT ✅  
+ENCRYPT HELLO → RESULT OIWWC ✅
+DECRYPT OIWWC → RESULT HELLO ✅
+```
 
 ---
