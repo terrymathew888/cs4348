@@ -21,7 +21,7 @@ Building a multi-process encryption system with three programs:
 
 ---
 
-## 2025-10-18 [10:52] - Session 1 Start
+## 2025-10-18 [10:30] - Session 1 Start
 
 ### Goal
 Implement and test the encryption program with Vigenère cipher.
@@ -34,7 +34,7 @@ Implement and test the encryption program with Vigenère cipher.
 
 ---
 
-## 2025-10-18 [TIME] - Session 1 End
+## 2025-10-18 [10:52] - Session 1 End
 
 ### Completed
 - ✅ Implemented VigenereCipher class
