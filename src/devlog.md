@@ -1,6 +1,6 @@
 # CS4348 Project 1 Development Log
 
-## 2025-10-18 [CURRENT_TIME] - Initial Planning Session
+## 2025-10-18 [10:20] - Initial Planning Session
 
 ### Project Understanding
 After reading through the project specifications, I understand that I need to implement a multi-process encryption system with three components:
@@ -34,7 +34,7 @@ Implementing in Python using subprocess module for pipe communication:
 
 ---
 
-## 2025-10-18 [CURRENT_TIME] - Session 1 Start
+## 2025-10-18 [10:24] - Session 1 Start
 
 ### Thoughts Since Last Session  
 - Reviewed Vigenère cipher algorithm - polyalphabetic substitution cipher
