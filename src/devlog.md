@@ -106,11 +106,79 @@ Input: "START" (empty message)
 Output: "2025-10-18 15:30 [START] " 
 ```
 
-### Next Session
-Implement driver program:
-- Create subprocesses for logger and encryption using Popen
-- Set up pipe communication (stdin/stdout)
-- Basic process coordination and testing
-- Apply patterns learned from cpu.py/mem.py examples
+---
+
+## 2025-10-19 [9:58] - Session 3 Start
+
+### Goal
+Implement driver program with subprocess management and basic user interface.
+
+### Plan
+1. Create driver.py that accepts log file as command line argument
+2. Launch logger and encryption subprocesses using Popen
+3. Set up pipe communication (stdin/stdout) with both processes
+4. Implement basic menu system (password, encrypt, decrypt, history, quit)
+5. Test subprocess coordination and communication
+6. Add proper process cleanup on exit
+
+### Key Requirements from cpu.py/mem.py Examples
+- Use `Popen(['python', 'program.py'], stdin=PIPE, stdout=PIPE, encoding='utf8')`
+- Remember to use `flush()` for immediate pipe communication
+- Handle process termination with QUIT commands
+- Test basic process coordination before adding full UI
+
+### Technical Approach
+1. Start with basic subprocess creation and testing
+2. Add simple communication (send one command, get response)
+3. Gradually build up to full menu system
+4. Add history management and error handling
 
 ---
+
+## 2025-10-19 [10:05] - Session 3 End
+
+### Completed
+-  Implemented complete driver.py with subprocess management
+-  Created logger and encryption subprocesses using Popen
+-  Set up pipe communication (stdin/stdout) with both processes
+-  Implemented full menu system (password, encrypt, decrypt, history, quit)
+-  Added history management for strings (excluding passwords)
+-  Input validation (letters and spaces only)
+-  Proper process cleanup on exit
+-  Error handling for subprocess communication
+
+### Problems Solved
+1. **Subprocess communication**: Used Popen with PIPE and encoding='utf8'
+2. **Process coordination**: Applied patterns from cpu.py/mem.py examples
+3. **Menu system**: Implemented user-friendly interface with clear options
+4. **History management**: Stores strings but not passwords as required
+5. **Input validation**: Uses regex to check for letters and spaces only
+6. **Process cleanup**: Sends QUIT to both processes and handles timeouts
+
+### Testing Results
+Complete workflow test:
+1. **Set password "SECRET"** → Password set successfully 
+2. **Encrypt "HELLO"** → Result: encrypted string 
+3. **Check history** → Shows HELLO and encrypted result 
+4. **Decrypt using history** → Result: HELLO 
+5. **Clean exit** → All processes terminated properly 
+
+### Key Implementation Details
+- **Logger communication**: One-way pipe (stdin only)
+- **Encryption communication**: Two-way pipes (stdin/stdout)
+- **History management**: List of strings, excludes passwords
+- **User interface**: Menu-driven with input validation
+- **Error handling**: Graceful handling of process failures
+
+### Log File Verification
+```
+[START] Driver program started
+[COMMAND] password / encrypt / decrypt / history
+[RESULT] Password set / Encrypted: XXX / Decrypted: XXX
+[ERROR] Any error conditions
+[END] Driver program exiting
+```
+
+---
+
+
