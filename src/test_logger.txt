@@ -1,0 +1,6 @@
+START Logging Started
+COMMAND password
+RESULT Password set
+ERROR Invalid input
+END Program finished
+QUIT
